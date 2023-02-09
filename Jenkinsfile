@@ -9,12 +9,12 @@ environment {
 	 //Build a container with the code source of the application
         stage('Build') {
             steps {
-                sh "docker build . -t hellopython:latest"
+                sh "docker build . -t rajindersingh1/hellopython:latest"
             }
         }
 stage('Login') {
       steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin | docker push hellopython:latest'
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
       }
     }
 
@@ -22,7 +22,7 @@ stage('Login') {
         stage('Push') {
             steps {
                 script {
-                    sh "docker push hellopython:latest"
+                    sh "docker push rajindersingh1/hellopython:latest"
                 }
             }
         }
